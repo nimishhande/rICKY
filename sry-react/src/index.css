@@ -1,0 +1,207 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Poppins', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-cursive: 'Great Vibes', cursive;
+
+  --color-bg-warm: #FFF8F5;
+  --color-bg-secondary: #FDEAE4;
+  --color-primary: #E63946;
+  --color-soft-pink: #FF8FA3;
+  --color-text-main: #4A2C2A;
+  --color-text-sub: #7A5C58;
+
+  --animate-heartbeat: heartbeat 1.5s ease-in-out infinite;
+  --animate-float: float 4s ease-in-out infinite;
+  --animate-pulse-glow: pulseGlow 2.5s ease-in-out infinite;
+  --animate-shimmer: shimmer 3s ease-in-out infinite;
+  --animate-drift: drift 8s ease-in-out infinite;
+  --animate-sparkle: sparkle 2s ease-in-out infinite;
+  --animate-bounce: bounce 1s ease-in-out infinite;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #FFF8F5;
+    color: #4A2C2A;
+    font-family: 'Poppins', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  ::selection {
+    background-color: #E63946;
+    color: white;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #FDEAE4;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #E63946, #FF8FA3);
+  border-radius: 10px;
+}
+
+/* ——— Keyframes ——— */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.15); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.1); }
+  70% { transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-15px) rotate(2deg); }
+  66% { transform: translateY(-8px) rotate(-1deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(230,57,70,0.3), 0 0 40px rgba(255,143,163,0.15); }
+  50% { box-shadow: 0 0 50px rgba(230,57,70,0.6), 0 0 80px rgba(255,143,163,0.3); }
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(5px, -10px) rotate(5deg); }
+  50% { transform: translate(-5px, -20px) rotate(-3deg); }
+  75% { transform: translate(3px, -12px) rotate(4deg); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); animation-timing-function: cubic-bezier(0.8,0,1,1); }
+  50% { transform: translateY(-6px); animation-timing-function: cubic-bezier(0,0,0.2,1); }
+}
+
+/* ——— Scroll progress bar ——— */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #E63946, #FF8FA3, #E63946);
+  background-size: 300% 100%;
+  animation: shimmer 2s linear infinite;
+  z-index: 9999;
+  transform-origin: left;
+}
+
+/* ——— Paper texture for letter ——— */
+.paper-texture {
+  background-color: #fffdf8;
+  background-image:
+    linear-gradient(rgba(230, 57, 70, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(230, 57, 70, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* ——— Glassmorphism ——— */
+.glass {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 200, 200, 0.3);
+}
+
+/* ——— Gradient text ——— */
+.gradient-text {
+  background: linear-gradient(135deg, #E63946 0%, #FF8FA3 50%, #E63946 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* ——— Polaroid card ——— */
+.polaroid {
+  background: white;
+  box-shadow: 0 4px 20px rgba(74, 44, 42, 0.12), 0 1px 4px rgba(74, 44, 42, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.polaroid:hover {
+  box-shadow: 0 12px 40px rgba(230, 57, 70, 0.2), 0 4px 12px rgba(74, 44, 42, 0.1);
+}
+
+/* ——— Timeline ——— */
+.timeline-line {
+  background: linear-gradient(to bottom, transparent, #E63946, #FF8FA3, #E63946, transparent);
+}
+
+/* ——— Floral corner decorations ——— */
+.floral-corner {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.35;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ——— Secret heart pulse ——— */
+@keyframes secretPulse {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+}
+
+.secret-heart {
+  animation: secretPulse 3s ease-in-out infinite;
+  cursor: pointer;
+}
+
+/* ——— Music player ——— */
+.music-player {
+  background: linear-gradient(135deg, rgba(230,57,70,0.9), rgba(255,143,163,0.85));
+  backdrop-filter: blur(12px);
+}
+
+/* ——— Utility: animate-bounce class ——— */
+.animate-bounce {
+  animation: bounce 1s ease-in-out infinite;
+}
+
+/* ——— Utility: text colours ——— */
+.text-primary { color: #E63946; }
+.text-soft-pink { color: #FF8FA3; }
+.text-text-main { color: #4A2C2A; }
+.text-text-sub { color: #7A5C58; }
+.bg-primary { background-color: #E63946; }
+.bg-soft-pink { background-color: #FF8FA3; }
+
+/* ——— Font utilities ——— */
+.font-serif { font-family: 'Playfair Display', serif; }
+.font-cursive { font-family: 'Great Vibes', cursive; }
+.font-sans { font-family: 'Poppins', sans-serif; }
